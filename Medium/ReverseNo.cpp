@@ -1,27 +1,37 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int reverse(int x)
+{
+    int sign;
+    if(x >= 0)
+    sign = 1;
+    else sign = -1;
+
+    long long num = x;
+
+    if(num < 0)
+    num = (-1)*num;
+
+    long long sum = 0;
+    while(num != 0)
+    {
+        int r = num % 10;
+        sum = sum*10 + r;
+        num /= 10;  
+    }
+    sum = sign*sum;
+    
+    if(sum > INT_MAX || sum < INT_MIN)
+    return 0;
+    
+    return (int)sum;
+}
 int main()
 {
     int x;
     cin>>x;
-    int sum = 0;
-    int sign;
-    if(x >= 0)
-    sign = 1;
-    else 
-    {
-        sign = -1;
-        x = (-1)*x;
-    }
-    while(x != 0)
-    {
-        int r = x % 10;
-        sum = sum*10 + r;
-        x /= 10;  
-    }
-    int num = sign*sum;
-    cout<<num;
-
+    cout<<reverse(x);
+    
     return 0;
 }
